@@ -1,6 +1,10 @@
-from time import sleep
+#!/usr/bin/python
+from flask import Flask
+app = Flask(__name__)   
+
+@app.route('/')
+def root():
+    return "Hello World!\n"
 
 if __name__ == "__main__":
-    while True:
-        print("Hello world!")
-        sleep(2)
+    app.run(debug=True, host="0.0.0.0", port=8080)
