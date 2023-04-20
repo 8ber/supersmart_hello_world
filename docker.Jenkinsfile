@@ -27,9 +27,13 @@ pipeline {
   }
   stages {
     stage('Build') {
+      environment {
+        GCR_CREDENTIALS = credentials('amplified-lamp-384112')
+      }
       steps {
         container('docker') {
           sh 'docker build -t gcr.io/amplified-lamp-384112/hello:${BUILD_NUMBER} .'
+          sh 'docker login -u _json_key -p "$(echo $GCR_CREDENTIALS)" https://gcr.io'
           sh 'docker push gcr.io/amplified-lamp-384112/hello:${BUILD_NUMBER}'
         }
       }
