@@ -29,7 +29,7 @@ pipeline {
     stage('Build') {
       steps {
         container('docker') {
-          sh 'echo eitan'
+          sh 'echo 8tan'
         }
       }
     }
