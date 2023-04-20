@@ -28,7 +28,7 @@ pipeline {
   stages {
     stage('Build') {
       environment {
-        GCR_CREDENTIALS = credentials('amplified-lamp-384112')
+        GCR_CREDENTIALS = credentials('gcp_creds')
       }
       steps {
         container('docker') {
