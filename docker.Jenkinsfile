@@ -29,7 +29,7 @@ pipeline {
     stage('Build') {
       steps {
         container('docker') {
-          sh 'echo 8tan'
+          sh 'docker build -t gcr.io/amplified-lamp-384112/hello:${BUILD_NUMBER} .'
         }
       }
     }
