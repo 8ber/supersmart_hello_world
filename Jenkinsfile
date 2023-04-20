@@ -6,7 +6,7 @@ pipeline {
         kind: Pod
         metadata:
           labels:
-            best-company: supersmart
+            super: smart
         spec:
           containers:
           - name: docker
