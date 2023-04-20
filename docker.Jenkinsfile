@@ -6,7 +6,7 @@ pipeline {
         kind: Pod
         metadata:
           labels:
-            some-label: some-label-value
+            best-company: supersmart
         spec:
           containers:
           - name: docker
@@ -30,6 +30,7 @@ pipeline {
       steps {
         container('docker') {
           sh 'docker build -t gcr.io/amplified-lamp-384112/hello:${BUILD_NUMBER} .'
+          sh 'docker push gcr.io/amplified-lamp-384112/hello:${BUILD_NUMBER}'
         }
       }
     }
