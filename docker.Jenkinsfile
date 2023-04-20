@@ -33,7 +33,8 @@ pipeline {
       steps {
         container('docker') {
           sh 'docker build -t gcr.io/amplified-lamp-384112/hello:${BUILD_NUMBER} .'
-          sh 'docker login -u _json_key -p "$(echo $GCR_CREDENTIALS)" https://gcr.io'
+          sh 'echo "$GCR_CREDENTIALS" > credentials.json'
+          sh 'docker login -u _json_key -p "$(cat credentials.json)" https://gcr.io'
           sh 'docker push gcr.io/amplified-lamp-384112/hello:${BUILD_NUMBER}'
         }
       }
